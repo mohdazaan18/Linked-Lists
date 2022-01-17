@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 using namespace std;
@@ -20,6 +19,26 @@ Node *Bettertakeinput(){
 
         }
         cin>>data;
+    }
+    return head;
+}
+Node *insertNode(Node *head,int i,int data){
+    Node *temp = head;
+   int count = 0;
+    Node *newnode = new Node(data);
+    if(i == 0){
+      newnode->next = head;
+      head = newnode;
+      return head;
+    }
+    while(temp!=NULL && count<i-1){
+        temp = temp->next;
+        count++;
+    }
+    if(temp!=NULL){
+        Node *a = temp->next;
+    temp->next = newnode;
+    newnode->next = a;
     }
     return head;
 }
@@ -59,10 +78,12 @@ int main()
     Node *head = Bettertakeinput();
 
     print(head);
-        int i;
+       /* int i;
     cin>>i;
     int c = length(head);
     cout<<"length of LL : "<<c<<endl;
-   printIthNode(head,i);
+   printIthNode(head,i);*/
+   Node *h = insertNode(head,2,30);
+   print(h);
     return 0;
 }
